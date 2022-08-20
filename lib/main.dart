@@ -6,6 +6,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  final url = 'https://www.ltobetheng.com';
+
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -17,18 +20,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       routes: {
-        "/": (_) => WebviewScaffold(
-              url: "https://www.ltobetheng.com",
-              appBar: AppBar(
-                title: const Text("Widget webview"),
-              ),
-              initialChild: Container(
-                color: Colors.purpleAccent,
-                child: const Center(
-                  child: Text('Waiting.....'),
+        "/": (_) => SafeArea(
+          top: true,
+          child: WebviewScaffold(
+                url: url,
+                // appBar: AppBar(
+                //   title: const Text("Widget webview"),
+                // ),
+                initialChild: Container(
+                  color: Colors.purpleAccent,
+                  child: const Center(
+                    child: Text('Waiting.....'),
+                  ),
                 ),
               ),
-            ),
+        ),
       },
     );
   }
