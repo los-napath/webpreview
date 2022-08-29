@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      // initialRoute: isFirstRun! ? '/welcome' : '/preview',
-      initialRoute: '/welcome',
+      initialRoute: isFirstRun! ? '/welcome' : '/preview',
+      // initialRoute: '/welcome',
       routes: {
         '/welcome': (_) => const WelcomeScreen(),
         '/preview': (_) => const WebPreview(),

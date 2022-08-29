@@ -78,8 +78,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     // const appStoreUrl = 'https://apps.apple.com/us/app/heng-lotto/id1642309118';
-    // final Uri appStoreUrl = Uri.parse('https://apps.apple.com/us/app/heng-lotto/id1642309118');
-    final Uri appStoreUrl = Uri.parse('https://play.google.com/store/apps/details?id=com.spotify.tv.android&hl=en&gl=US');
+    final Uri appStoreUrl = Uri.parse('https://apps.apple.com/us/app/heng-lotto/id1642309118');
+    // final Uri appStoreUrl = Uri.parse('https://play.google.com/store/apps/details?id=com.spotify.tv.android&hl=en&gl=US');
     return Scaffold(
       body: Stack(
         children: <Widget>[

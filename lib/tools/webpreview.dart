@@ -12,7 +12,8 @@ class _WebPreviewState extends State<WebPreview> {
   // String url = 'https://www.ltobetheng.com';
   // String url = 'https://www.ltobet.com/register/agentltoheng';
 
-  String url = 'https://www.thairath.co.th/lottery';
+  // String url = 'https://www.thairath.co.th/lottery';
+  String url = 'https://www.lottery.co.th';
 
   final flutterWebviewPlugin = FlutterWebviewPlugin();
 
