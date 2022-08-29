@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'items.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -73,145 +75,75 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 borderRadius: BorderRadius.circular(10.0)),
           ));
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: Stack(
-  //       children: <Widget>[
-  //         PageView.builder(
-  //           controller: _pageViewController,
-  //           itemCount: slides.length,
-  //           itemBuilder: (BuildContext context, int index) {
-  //             _pageViewController.addListener(() {
-  //               setState(() {
-  //                 currentPage = _pageViewController.page;
-  //               });
-  //             });
-  //             return slides[index];
-  //           },
-  //         ),
-  //         Align(
-  //             alignment: Alignment.bottomCenter,
-  //             child: Container(
-  //                 margin: const EdgeInsets.only(top: 70.0),
-  //                 padding: const EdgeInsets.symmetric(vertical: 40.0),
-  //                 child: currentPage!.round() < 4
-  //                     ? Row(
-  //                         mainAxisAlignment: MainAxisAlignment.center,
-  //                         children: indicator(),
-  //                       )
-  //                     :  Row(
-
-  //                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //                           crossAxisAlignment: CrossAxisAlignment.end,
-  //                           children: [
-  //                             Expanded(
-  //                               flex: 1,
-  //                               child: Container(
-  //                                 margin: const EdgeInsets.symmetric(horizontal: 10.0),
-  //                                 child: ElevatedButton(
-  //                                     onPressed: () => {
-  //                                           Navigator.pushNamed(
-  //                                               context, '/')
-  //                                         },
-  //                                     child: const Text('Rate Us')),
-  //                               ),
-  //                             ),
-  //                             Expanded(
-  //                               flex: 1,
-  //                               child: Container(
-  //                                 margin: const EdgeInsets.symmetric(horizontal: 10.0),
-  //                                 child: ElevatedButton(
-  //                                     onPressed: () => {
-  //                                           Navigator.pushNamed(
-  //                                               context, '/preview')
-  //                                         },
-  //                                     child: const Text('Done')),
-  //                               ),
-  //                             ),
-  //                           ],
-  //                         ),
-  //                       ))
-  //       ],
-  //     ),
-  //   );
-  // }
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onVerticalDragUpdate: (details) {},
-      onHorizontalDragUpdate: (details) {
-        print('posX = ${details.globalPosition.dx.floorToDouble()}');
-        print('posY = ${details.globalPosition.dy.floorToDouble()}');
-        if (details.delta.direction < 0) {
-          print('yesss');
-        }
-      },
-      onTap: () => {print("TAB")},
-      child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            PageView.builder(
-              controller: _pageViewController,
-              itemCount: slides.length,
-              itemBuilder: (BuildContext context, int index) {
-                _pageViewController.addListener(() {
-                  setState(() {
-                    currentPage = _pageViewController.page;
-                  });
+    // const appStoreUrl = 'https://apps.apple.com/us/app/heng-lotto/id1642309118';
+    // final Uri appStoreUrl = Uri.parse('https://apps.apple.com/us/app/heng-lotto/id1642309118');
+    final Uri appStoreUrl = Uri.parse('https://play.google.com/store/apps/details?id=com.spotify.tv.android&hl=en&gl=US');
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          PageView.builder(
+            controller: _pageViewController,
+            itemCount: slides.length,
+            itemBuilder: (BuildContext context, int index) {
+              _pageViewController.addListener(() {
+                setState(() {
+                  currentPage = _pageViewController.page;
                 });
-                return slides[index];
-              },
-            ),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  margin: const EdgeInsets.only(top: 70.0),
-                  padding: const EdgeInsets.symmetric(vertical: 40.0),
-                  child: currentPage!.round() < 2
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: indicator(),
-                        )
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 10.0),
-                                child: ElevatedButton(
-                                    onPressed: () =>
-                                        {Navigator.pushNamed(context, '/')},
-                                    child: const Text(
-                                      'ให้ดาว',
-                                      style: TextStyle(color: Colors.white),
-                                    )),
-                              ),
+              });
+              return slides[index];
+            },
+          ),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: const EdgeInsets.only(top: 70.0),
+                padding: const EdgeInsets.symmetric(vertical: 40.0),
+                child: currentPage!.round() < 2
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: indicator(),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: ElevatedButton(
+                                  onPressed: () => 
+                                      {
+                                        launchUrl(appStoreUrl)
+                                      },
+                                  child: const Text(
+                                    'ให้ดาว',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 10.0),
-                                child: ElevatedButton(
-                                    onPressed: () => {
-                                          Navigator.pushNamed(
-                                              context, '/preview')
-                                        },
-                                    child: const Text(
-                                      'พร้อมแล้ว',
-                                      style: TextStyle(color: Colors.white),
-                                    )),
-                              ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: ElevatedButton(
+                                  onPressed: () => {
+                                        Navigator.pushNamed(context, '/preview')
+                                      },
+                                  child: const Text(
+                                    'พร้อมแล้ว',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             ),
-                          ],
-                        ),
-                ))
-          ],
-        ),
+                          ),
+                        ],
+                      ),
+              ))
+        ],
       ),
     );
   }

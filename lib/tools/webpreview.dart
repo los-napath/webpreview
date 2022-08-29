@@ -12,7 +12,7 @@ class _WebPreviewState extends State<WebPreview> {
   // String url = 'https://www.ltobetheng.com';
   // String url = 'https://www.ltobet.com/register/agentltoheng';
 
-  String url = 'https://www.ltobetheng.com';
+  String url = 'https://www.thairath.co.th/lottery';
 
   final flutterWebviewPlugin = FlutterWebviewPlugin();
 
@@ -42,7 +42,7 @@ class _WebPreviewState extends State<WebPreview> {
     // WidgetsBinding.instance
     //     .addPostFrameCallback((_) => flutterWebviewPlugin.show());
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final heightBotNavBar = MediaQuery.of(context).size.height * 0.06;
@@ -122,10 +122,12 @@ class _WebPreviewState extends State<WebPreview> {
               flex: 1,
               child: GestureDetector(
                   onTap: () => {
-                        flutterWebviewPlugin.reloadUrl(
-                            'https://www.ltobet.com/register/agentltoheng')
+                        // flutterWebviewPlugin.reloadUrl(
+                        //     'https://www.ltobet.com/register/agentltoheng')
+                        flutterWebviewPlugin.reload()
                       },
                   child: Container(
+                    height: heightBotNavBar,
                     //margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.001),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(heightBotNavBar * 0.01),
